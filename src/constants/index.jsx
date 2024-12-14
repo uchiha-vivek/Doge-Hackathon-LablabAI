@@ -8,7 +8,7 @@ export const FEATURES = [
     {
       title: "Citizen Feedback Collection",
       description: "Gather valuable feedback from citizens to improve governance and services.",
-      link:'/form'
+      link:'/feedback'
     },
     {
       title: "Automated Data Processing",
