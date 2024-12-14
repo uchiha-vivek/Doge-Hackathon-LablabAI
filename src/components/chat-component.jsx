@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import OpenAI from "openai";
 import { jsPDF } from "jspdf";
-
+import { useNavigate } from 'react-router-dom'
 function ChatComponent() {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [fileContent, setFileContent] = useState("");
-
+  const navigate = useNavigate()
   const handleChat = async () => {
     if (!message.trim() && !fileContent) return;
     setLoading(true);
@@ -94,29 +94,38 @@ function ChatComponent() {
           onChange={handleFileUpload}
         /> */}
 
-         <div className="justify-center flex" >
-         <button
-          className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-2 px-4 rounded hover:from-yellow-500 hover:to-yellow-700 disabled:opacity-50 mb-2"
-          onClick={handleChat}
-          disabled={loading}
-        >
-          {loading ? "Loading..." : "Send"}
-        </button>
-         </div>
+        <div className="justify-center flex" >
+          <button
+            className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-2 px-4 rounded hover:from-yellow-500 hover:to-yellow-700 disabled:opacity-50 mb-2"
+            onClick={handleChat}
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Send"}
+          </button>
+        </div>
 
-         <div className="justify-center flex">
-         <button
-          className=" mt-5 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-2 px-4 rounded hover:from-yellow-500 hover:to-yellow-700 disabled:opacity-50 mb-2 ml ml-5"
-          onClick={downloadPDF}
-        >
-          Download as PDF
-        </button>
-         </div>
+        <div className="justify-center flex">
+          <button
+            className=" mt-5 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-2 px-4 rounded hover:from-yellow-500 hover:to-yellow-700 disabled:opacity-50 mb-2 ml ml-5"
+            onClick={downloadPDF}
+          >
+            Download as PDF
+          </button>
+           
+        </div>
+        <div className="justify-center flex" >
+            <button
+              className=" mt-5 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-2 px-4 rounded hover:from-yellow-500 hover:to-yellow-700 disabled:opacity-50 mb-2 ml ml-5"
+              onClick={() => navigate('/')}
+            >
+              Return to Home Page !
+            </button>
+          </div>
       </div>
 
       {/* Right Side - Output */}
       <div className="md:w-1/2 p-4">
-        <h2 className="text-xl font-semibold mb-4">Response</h2>
+        <h2 className="text-xl text-white font-semibold mb-4">Response</h2>
         <div
           className="border rounded-md p-4 bg-gray-100 max-h-96 overflow-y-auto"
           style={{ whiteSpace: "pre-wrap" }}

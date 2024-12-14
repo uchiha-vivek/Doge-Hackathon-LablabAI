@@ -1,31 +1,24 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import ChatComponent from "./components/chat-component"
-import FooterComponent from "./components/footer-component"
-import FormPage from "./Page/FormPage"
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+ 
+import FormPage from './Page/FormPage';
+import CitizenFeedback from './Page/FeedbackPage';
+import LoginPage from './Page/LoginPage';
+import PrivateRoute from './components/privateRoute-component'; // Import PrivateRoute
+import LandingPage from './Page/LandingPage';
 
-import AIGovernmentLandingPage from "./Page/LandingPage"
-import CitizenFeedback from "./components/sentimentAnalysis-component"
-
-
-function App(){
+const App = () => {
   return (
-    <>
-    {/* <AIGovernmentLandingPage/>
-    <FormPage/> */}
-    <div>
-      
-      <BrowserRouter>
-      
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AIGovernmentLandingPage/>}/>
-        <Route path="/form" element ={ <FormPage/> }/>
-        <Route path="/feedback" element={<CitizenFeedback/>}/>
+        <Route path="/" element={<LandingPage/>} />
+        {/* Protect these routes */}
+        <Route path="/form" element={<PrivateRoute element={<FormPage />} />} />
+        <Route path="/feedback" element={<PrivateRoute element={<CitizenFeedback />} />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
-      
-      </BrowserRouter>
-    </div>
-     
-    </>
-  )
-}
-export default App
+    </BrowserRouter>
+  );
+};
+
+export default App;

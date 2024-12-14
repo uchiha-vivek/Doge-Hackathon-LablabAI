@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Pie, Bar } from "react-chartjs-2";
 import OpenAI from "openai";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from "chart.js";
-
+import {useNavigate} from 'react-router-dom'
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
 function CitizenFeedback() {
@@ -11,7 +11,7 @@ function CitizenFeedback() {
   const [loading, setLoading] = useState(false);
   const [sentimentAnalysis, setSentimentAnalysis] = useState({ positive: 0, neutral: 0, negative: 0 });
   const [error, setError] = useState("");
-
+  const navigate = useNavigate()
   const handleChat = async () => {
     if (!message.trim()) return;
     setLoading(true);
@@ -107,13 +107,22 @@ function CitizenFeedback() {
           />
 
           <div className="justify-center flex" >
-          <button
-            className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-2 px-4 rounded hover:from-yellow-500 hover:to-yellow-700 disabled:opacity-50 mb-2"
-            onClick={handleChat}
-            disabled={loading}
-          >
-            {loading ? "Loading..." : "Send"}
-          </button>
+            <button
+              className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-2 px-4 rounded hover:from-yellow-500 hover:to-yellow-700 disabled:opacity-50 mb-2"
+              onClick={handleChat}
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Send"}
+            </button>
+          </div>
+          <div className="justify-center flex" >
+            <button
+              className="mt-5 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-2 px-4 rounded hover:from-yellow-500 hover:to-yellow-700 disabled:opacity-50 mb-2"
+              onClick={() => useNavigate('/') }
+              disabled={loading}
+            >
+              Return to Home Page !
+            </button>
           </div>
         </div>
 

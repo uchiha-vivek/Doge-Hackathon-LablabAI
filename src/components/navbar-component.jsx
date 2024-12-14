@@ -67,7 +67,7 @@ const Navbar = () => {
                     </div>
                 </div>
                 {open && (
-                    <div className="md:hidden bg-neutral-900/60 backdrop-blur-md border border-neutral-800 p-4 mt-2 rounded-xl">
+                    <div className="md:hidden bg-neutral-900/60 backdrop-blur-md border text-white border-neutral-800 p-4 mt-2 rounded-xl">
                         <div className="flex flex-col space-y-4">
                             <a href="#" className="hover:text-neutral-700">
                                 Product
