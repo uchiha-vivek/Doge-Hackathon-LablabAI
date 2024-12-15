@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa"; // Fixing the import for FaE
 import gov from '../assets/gov.png';
 import X from '../assets/x.png';
 import GoogleSvg from "../assets/icons8-google.svg";
+import { signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { auth, googleProvider } from '../config/firebase';
 import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
@@ -33,12 +34,32 @@ const Login = () => {
 
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
-      navigate("/form"); // Redirect after Google sign-in
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        await signInWithRedirect(auth, googleProvider);
+      } else {
+        await signInWithPopup(auth, googleProvider);
+      }
+      navigate("/form");
     } catch (error) {
       console.log(error);
     }
   };
+  
+  useEffect(() => {
+    const handleRedirect = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result) {
+          navigate("/form");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleRedirect();
+  }, []);
+  
 
   const logout = async () => {
     try {
