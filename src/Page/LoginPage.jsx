@@ -82,7 +82,7 @@ const Login = () => {
           </div>
           <div className="login-center">
             <h2> XGov Welcomes You ! </h2>
-            <p className="text-sm"  >Please enter your details</p>
+            <p className="text-sm"  >Enter your details</p>
             {error && <p className="error-message">{error}</p>} {/* Display error message */}
             <form>
               <input
