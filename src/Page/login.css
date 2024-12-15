@@ -5,8 +5,14 @@
     margin: 0px;
   }
   
+/* Ensure this is in the correct CSS file (login.css) */
+@media screen and (max-width: 768px) {
+    .google-login-button {
+      display: none !important; /* Use !important to override other styles */
+    }
+  }
   
-  
+
   body{
     font-family: "Poppins", sans-serif;
     height: 110vh;

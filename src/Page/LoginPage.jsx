@@ -120,7 +120,7 @@ const Login = () => {
                 <button type="button" onClick={signIn}>
                   Log In
                 </button>
-                <button type="button" onClick={signInWithGoogle}>
+                <button type="button" onClick={signInWithGoogle} className="google-login-button" >
                   <img src={GoogleSvg} alt="Google Logo" />
                   Log In with Google
                 </button>
