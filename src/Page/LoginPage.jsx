@@ -81,8 +81,8 @@ const Login = () => {
             <img src={X} alt="App Logo" />
           </div>
           <div className="login-center">
-            <h2>Welcome back!</h2>
-            <p>Please enter your details</p>
+            <h2> XGov Welcomes You ! </h2>
+            <p className="text-sm"  >Please enter your details</p>
             {error && <p className="error-message">{error}</p>} {/* Display error message */}
             <form>
               <input
@@ -112,11 +112,11 @@ const Login = () => {
                     Remember for 30 days
                   </label>
                 </div>
-                <a href="#" className="forgot-pass-link">
+                {/* <a href="#" className="forgot-pass-link">
                   Forgot password?
-                </a>
+                </a> */}
               </div>
-              <div className="login-center-buttons">
+              <div className="login-center-buttons mt-4">
                 <button type="button" onClick={signIn}>
                   Log In
                 </button>
