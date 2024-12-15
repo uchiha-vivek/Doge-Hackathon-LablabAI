@@ -5,9 +5,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa"; // Fixing the import for FaE
 import gov from '../assets/gov.png';
 import X from '../assets/x.png';
 import GoogleSvg from "../assets/icons8-google.svg";
-import { signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { auth, googleProvider } from '../config/firebase';
-import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithPopup, signOut,signInWithRedirect } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
